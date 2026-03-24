@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:krishi_sahayak/src/features/disease_detection/data/detection_repository.dart';
 import 'package:krishi_sahayak/src/features/authentication/data/auth_repository.dart';
 import 'package:krishi_sahayak/src/core/utils/snackbar_utils.dart';
@@ -22,7 +23,8 @@ class _DetectionScreenState extends ConsumerState<DetectionScreen> {
   bool _isAnalyzing = false;
   final _picker = ImagePicker();
 
-  static const String _apiKey = 'AIzaSyD4DA0-AiZDhO6o33d1Xp_UmED4GvW6Cyo';
+  // API Key is now securely loaded from .env
+  final String _apiKey = dotenv.get('GEMINI_API_KEY');
 
   Future<void> _pickImage(ImageSource source) async {
     final pickedFile = await _picker.pickImage(
