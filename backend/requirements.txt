@@ -1,0 +1,8 @@
+flask
+flask-cors
+google-genai
+pillow
+numpy
+gunicorn
+flask-sqlalchemy
+psycopg2-binary
